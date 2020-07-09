@@ -34,23 +34,15 @@
   overflow-y: auto;
 }
 
-.spinning {
-  margin-top: 7em;
-  width: 100% !important;
-  height: 18rem !important;
-  border-width: 0.5rem !important;
+.container-spinner {
+  background-color: blue;
 }
 
-.contenedor {
-  margin: 2rem auto;
-  border: 1px solid #aaa;
-  height: 300px;
-  width:90%;
-  max-width: 400px;
-  background: #f1f2f3;
-  overflow:auto;
-  box-sizing: border-box;
-  padding:0 1rem;
+.spinning {
+  margin: calc(50% - 9rem);
+  width: 18rem !important;
+  height: 18rem !important;
+  border-width: 0.8rem !important;
 }
 
 /* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/

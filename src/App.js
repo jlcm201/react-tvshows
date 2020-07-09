@@ -14,7 +14,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch('http://api.tvmaze.com/shows')
+    fetch('https://api.tvmaze.com/shows')
       .then(res => res.json())
       .then(tvshows => {
         setTvshows(tvshows);
@@ -26,10 +26,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      
-      { isFetching && <div className='offset-sm-4 col-sm-4'>
-        <div className="spinner-border text-dark spinning"></div>
-      </div> }
+      { isFetching && <div><div className="spinner-border text-dark spinning"></div></div> }
       { !isFetching && 
         <>
           <Filter />
