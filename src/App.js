@@ -1,25 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import { Provider } from 'react-redux';
+import List from "./List/List";
+import store from './store';
 import './App.css';
+import Favorites from './inputs/favorites';
+import Filter from './inputs/filter';
+
 
 function App() {
+  const [ tvshows, setTvshows ] = useState([]);
+  const [ isFetching, setFetching ] = useState(true);
+
+
+
+  useEffect(() => {
+    fetch('http://api.tvmaze.com/shows')
+      .then(res => res.json())
+      .then(tvshows => {
+        setTvshows(tvshows);
+        setFetching(false);
+      });
+    
+  }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      
+      { isFetching && <div className='offset-sm-4 col-sm-4'>
+        <div className="spinner-border text-dark spinning"></div>
+      </div> }
+      { !isFetching && 
+        <>
+          <Filter />
+          <Favorites />
+          <List tvshows = { tvshows } />
+        </>
+      }
+    </Provider>
   );
 }
 

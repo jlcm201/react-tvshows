@@ -1,0 +1,13 @@
+.image {
+    max-height: 4em;
+}
+
+.titleName {
+    padding-top: 0.2em;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.underline {
+    border-bottom: 1px gray solid;
+}
